@@ -21,6 +21,20 @@
                 </div>
             </div>
 
+            <!-- Category selector -->
+            <div class="form-group">
+                <label for="cat">Category</label>
+                
+                <div class="col-sm-6">
+                    <select name="cat_id">
+                        <option value="0">...selecciona categoria...</option>
+                        @foreach( $cats as $cat )
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
             <!-- Add Task Button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
@@ -57,6 +71,14 @@
                                 <td class="table-text">
                                     <div>{{ $task->name }}</div>
                                 </td>
+                                <!-- Task Category -->
+                                <td class="table-text">
+                                    <!-- si la tasca té categoria, la mostem -->
+                                    @if( $task->category_id )
+                                    <div>{{ $task->category->name }}</div>
+                                    @endif
+                                </td>
+
 
                                 <!-- Delete Button -->
                                 <td>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Models\Task;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,11 @@ use App\Models\Task;
 Route::get('/', function () {
 
     $tasks = Task::orderBy('created_at', 'asc')->get();
+    $categories = Category::all();
 
     return view('tasks', [
-        'tasks' => $tasks
+        'tasks' => $tasks,
+        'cats' => $categories,
     ]);
 
 });
@@ -47,6 +50,8 @@ Route::post('/task', function (Request $request) {
 
     $task = new Task;
     $task->name = $request->name;
+    if( $request->cat_id!=0 )
+        $task->category_id = $request->cat_id;
     $task->save();
 
     return redirect('/');
