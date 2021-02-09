@@ -60,7 +60,8 @@
                     <!-- Table Headings -->
                     <thead>
                         <th>Task</th>
-                        <th>&nbsp;</th>
+                        <th>Category</th>
+                        <th>Delete</th>
                     </thead>
 
                     <!-- Table Body -->
