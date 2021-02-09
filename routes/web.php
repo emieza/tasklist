@@ -40,6 +40,7 @@ Route::get('/', function () {
 Route::post('/task', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:70',
+        'category' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -68,5 +69,18 @@ Route::delete('/task/{task}', function (Task $task) {
     $task->delete();
 
     return redirect('/');
+});
+
+
+
+/*
+ *
+ * llista tasks per categories
+ *
+ */
+Route::get('/catlist', function(Request $req) {
+    $cats = Category::all();
+
+    return view('catlist', ["cats"=>$cats] );
 });
 

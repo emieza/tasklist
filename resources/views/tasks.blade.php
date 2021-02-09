@@ -2,6 +2,9 @@
 
 @section('content')
 
+    <h1>Tasks</h1>
+    <p><a href="/catlist">See tasks by categories</a></p>
+
     <!-- Bootstrap Boilerplate... -->
 
     <div class="panel-body">
